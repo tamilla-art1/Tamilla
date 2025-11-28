@@ -12,6 +12,7 @@ import java.util.Scanner;
 
 
 public class Payment1 extends AbstractPaymentService {
+    boolean a=true;
     Scanner scanner = new Scanner(System.in);
     User user = new User();
 
@@ -19,12 +20,11 @@ public class Payment1 extends AbstractPaymentService {
     public void showBalance(User y) {
         this.user=y;
         Operation operation = new Operation( count + 1);
-
-
+        if (tarixceCount==tarixce.length){
+            clearTarixce();}
         Database.tarixce[Database.tarixceCount] = operation.getId();
-        if(tarixceCount<tarixce.length){
-        Database.tarixceCount++;}
-        else clearTarixce();
+        Database.tarixceCount++;
+
         System.out.println("Balance=" + user.getBalance()+" "+"ID: "+operation.getId());
 
     }
@@ -36,10 +36,11 @@ public class Payment1 extends AbstractPaymentService {
         String input = scanner.nextLine();
         double amount = Double.parseDouble(input);
         Operation operation = new Operation(amount, count + 1);
+        if (tarixceCount==tarixce.length){
+            clearTarixce();}
         Database.tarixce[Database.tarixceCount] = operation.getId();
-        if(tarixceCount<tarixce.length){
-            Database.tarixceCount++;}
-        else clearTarixce();
+        Database.tarixceCount++;
+
         user.setBalance(user.getBalance() + amount);
         System.out.println(amount + "AZN əlavə olundu." + "Balans:" + user.getBalance()+" "+"ID: "+operation.getId());
 
@@ -52,10 +53,11 @@ public class Payment1 extends AbstractPaymentService {
         String input = scanner.nextLine();
         double amount = Double.parseDouble(input);
         Operation operation = new Operation(amount, count + 1);
+        if (tarixceCount==tarixce.length){
+            clearTarixce();}
         Database.tarixce[Database.tarixceCount] = operation.getId();
-        if(tarixceCount<tarixce.length){
-            Database.tarixceCount++;}
-        else clearTarixce();
+        Database.tarixceCount++;
+
         if((user.getBalance() - amount)>0){
         user.setBalance(user.getBalance() - amount);
             System.out.println(amount + "AZN çıxıldı." + "Balans:" + user.getBalance()+" "+"ID: "+operation.getId());}

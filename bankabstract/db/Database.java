@@ -9,7 +9,7 @@ public class Database {
     public static ArrayList<User> userslist=new ArrayList<>();
     public static int[] tarixce = new int[3];
     public static  void clearTarixce() {
-        if (tarixceCount > 3) {
+        if (tarixceCount >=tarixce.length) {
             Arrays.fill(tarixce, 0);
             tarixceCount = 0;
         }
